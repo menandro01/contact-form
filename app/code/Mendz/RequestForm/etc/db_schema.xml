@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="zendesk_request" resource="default" engine="innodb" comment="Zendesk Contact Form Table">
+        <column xsi:type="int" name="request_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Reqeust Id"/>
+
+        <column xsi:type="varchar" name="subject" nullable="false" length="50" default="simple" comment="Subject"/>
+
+        <column xsi:type="varchar" name="name" nullable="false" length="100" default="simple" comment="Name"/>
+
+        <column xsi:type="varchar" name="email" nullable="false" length="100" default="simple" comment="Email"/>
+
+        <column xsi:type="int" name="order_number" padding="10" unsigned="true" nullable="false" comment="Order Number"/>
+
+        <column xsi:type="varchar" name="image" nullable="false" length="255" default="simple" comment="Image"/>
+
+        <column xsi:type="varchar" name="description" nullable="false" length="255" default="simple" comment="Description"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="request_id"/>
+        </constraint>
+    </table>
+
+</schema>

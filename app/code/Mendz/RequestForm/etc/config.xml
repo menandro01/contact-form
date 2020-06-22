@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <request_form>
+            <general>
+                <subject>subject</subject>
+                <name>name</name>
+                <email>email</email>
+                <order_number>attribute_value_ids</order_number>
+                <description>comment</description>
+            </general>
+        </request_form>
+    </default>
+</config>

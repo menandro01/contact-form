@@ -1,0 +1,120 @@
+<?php
+$subjectTypes = $block->getSubjectTypes();
+?>
+
+<div class="block contact-form">
+    <div class="title"><strong><?= $block->escapeHtml(__('Contact Form')) ?></strong></div>
+    <div class="content">
+        <form class="form subscribe"
+            novalidate
+            action="<?= $block->escapeUrl($block->getFormActionUrl()) ?>"
+            method="post"
+            data-mage-init='{"validation": {}}'
+            enctype="multipart/form-data">
+
+            <div class="field contact-form">
+
+            	<div class="control">
+                    <label for="subject">
+                        <span class="label">
+                            <?= $block->escapeHtml(__('Subject')) ?>
+                        </span>
+                        <select name="holiday_type" id="subject" class="select" required="true" data-validate="{required:true}">
+                            <option selected="selected" disabled="disabled" value=""><?= __('Subject Type') ?></option>
+                            <?php foreach ($subjectTypes as $subjectType): ?>
+                            <option value="<?=$subjectType ?>"><?=$subjectType ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="control">
+                    <label for="name">
+                        <span class="label">
+                            <?= $block->escapeHtml(__('Name')) ?>
+                        </span>
+                        <input name="name" type="text" id="name"
+                    		   placeholder="<?= $block->escapeHtmlAttr(__('Enter your Name')) ?>"
+                               data-mage-init='{"mage/trim-input":{}}'
+                               data-validate="{required:true}"
+                        />
+                    </label>
+                </div>
+
+                <div class="control">
+                    <label for="email">
+                        <span class="label">
+                            <?= $block->escapeHtml(__('Email')) ?>
+                        </span>
+                        <input name="email" type="email" id="email"
+                               placeholder="<?= $block->escapeHtmlAttr(__('Enter your email address')) ?>"
+                               data-mage-init='{"mage/trim-input":{}}'
+                               data-validate="{required:true, 'validate-email':true}"
+                        />
+                    </label>
+                </div>
+
+                <div class="control">
+                    <label for="order_number">
+                        <span class="label">
+                            <?= $block->escapeHtml(__('Order Number')) ?>
+                        </span>
+                        <input name="order_number" type="text" id="order_number"
+                    		   placeholder="<?= $block->escapeHtmlAttr(__('Enter Order Number')) ?>"
+                               data-mage-init='{"mage/trim-input":{}}'
+                               data-validate="{required:true}"
+                        />
+                    </label>
+                </div>
+
+                <div class="control">
+                    <label for="description">
+                        <span class="label">
+                            <?= $block->escapeHtml(__('Description')) ?>
+                        </span>
+                        <input name="description" type="text" id="description"
+                    		   placeholder="<?= $block->escapeHtmlAttr(__('Enter Description')) ?>"
+                               data-mage-init='{"mage/trim-input":{}}'
+                               data-validate="{required:true}"
+                        />
+                    </label>
+                </div>
+
+                <div class="control" id="image_wrapper">
+                    <label for="image">
+                        <span class="label">
+                            <?= $block->escapeHtml(__('Image')) ?>
+                        </span>
+                        <input type="file" id="image" name="image" data-validate="{required:true}">
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="actions" style="margin-top: 50px">
+                <button class="action subscribe primary"
+                        title="<?= $block->escapeHtmlAttr(__('Submit')) ?>"
+                        type="submit"
+                        aria-label="Submit">
+                    <span><?= $block->escapeHtml(__('Submit')) ?></span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $("#image_wrapper").hide();
+
+        $("#subject").change(function(e){
+          if(e.target.value == 'Something Went Wrong'){
+            $("#image_wrapper").show();
+          } else {
+            $("#image_wrapper").hide();
+          }
+        });
+    });
+</script>
